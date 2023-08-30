@@ -56,21 +56,21 @@
   <body>
    <div class="container">
     <section class="header">
-     mydependency
+     transformers
      <span>
      </span>
      <span id='latest-version' class="version">
-      1.0
+      3.0
      </span>
     </section>
-    <pre id='installdanger' hidden><button class="danger-button" disabled>DANGER ! A higher version of <i>mydependency</i> already exists on PyPi</button></pre>
-    <pre id='installcmd'><code>pip install mydependency --extra-index-url https://astariul.github.io/github-hosted-pypi/</code></pre>
-    <a href="git+https://github.com/astariul/mydependency#egg=mydependency-1.0">
+    <pre id='installdanger' hidden><button class="danger-button" disabled>DANGER ! A higher version of <i>transformers</i> already exists on PyPi</button></pre>
+    <pre id='installcmd'><code>pip install transformers --extra-index-url https://astariul.github.io/github-hosted-pypi/</code></pre>
+    <a href="git+https://github.com/huggingface/transformers@v3.0.2#egg=transformers-3.0">
     </a>
     <hr/>
     <div class="row">
      <div class="three columns">
-      <button onclick="location.href='https://github.com/astariul/mydependency'">
+      <button onclick="location.href='https://github.com/huggingface/transformers'">
        Homepage
       </button>
       <p class="elem">
@@ -85,8 +85,11 @@
       Description
      </h6>
      <p>
-      This is a public, github-hosted python package for test.
-
+      This is a (safe) example of a package vulnerable to supply chain attacks.
+      <br>
+      Here we registered a private package called <i>transformers</i>. But another package with the exact same name and a higher version is registered in the public PyPi index. Running the install command would install the package registered there (which might be malicious), not my private package as intended.
+      <br>
+      A warning is displayed instead of the install command.
      </p>
     </div>
    </div>
@@ -99,7 +102,7 @@
 
     $(document).ready(function(){
       var this_vers = document.getElementById('latest-version').textContent.trim();
-      check_supply_chain_attack("mydependency", this_vers, warn_unsafe);
+      check_supply_chain_attack("transformers", this_vers, warn_unsafe);
     });
   </script>
  </body>
